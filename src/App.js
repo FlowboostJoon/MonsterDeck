@@ -1,6 +1,4 @@
-import { Component } from 'react;'
-
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
 
 class App extends Component {    
@@ -9,7 +7,21 @@ class App extends Component {
     super();
 
     this.state = { 
-      name: 'Joon'
+      monsters: [
+        {
+          id: 1,
+          name: "Dracula",
+        },
+        {
+          id: 2,
+          name: "Frankenstein",
+        },
+        {
+          id: 3,
+          name: "Devil"
+        }
+      ]  
+
     }   
   }
 
@@ -17,11 +29,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Hi! {this.state.name}</p>
-          <button>Change name</button>          
-        </header>
+        {
+          this.state.monsters.map((monster) => {
+            return <div key={monster.id}>
+              <h1>{monster.name}</h1>            
+            </div>;
+          })}
       </div>
     );
   }
